@@ -108,3 +108,19 @@ The whole installation process is handled by MSI and PowerShell. At its core, th
   * Check whether there is a file at `%APPDATALOCAL%\DockerInWSL\backup.tar.gz` and, if so, extract it. If this fails *do not* abort the installation because the old distribution is already gone. **If you find your WSL Docker empty after an update, check whether** `%APPDATALOCAL%\DockerInWSL\backup.tar.gz` **exists and try to extract it manually**
   * Finally, the startup script [docker-wsl.bat](msi/scripts/docker-wsl.bat) is called to start Docker.
 * Additionally some registry keys are created to support proper updates/uninstalling using MSI.
+
+## How to fork this repository?
+
+If you wanna fork this repository:
+
+ * change the values in `Certificate.ini`
+ * open a terminal and run `generate-cert.ps1`
+ * enter a password, remember them, you need them later!
+ * note the generated thumbprint!
+ * open GitHub, go to the repository settings, in the left sidebar click on "Secrets and variables", then on "Actions"
+ * click on the button "New repository secret"
+   * Name: `PFX_PASSPHRASE`
+   * Secret: <password\>
+ * click on the button "New repository secret"
+   * Name: `PFX_THUMBPRINT`
+   * Secret: <thumbprint\>
