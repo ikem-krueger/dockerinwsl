@@ -4,11 +4,8 @@
 
 image.tar:
 	cd docker
-	docker build -t dockerinwsl:latest .
-	docker rm --force dockerinwsl || true
-	docker run --name dockerinwsl dockerinwsl:latest || true
-	docker export --output=image.tar dockerinwsl
-	docker rm --force dockerinwsl
+	curl -o image.tar.gz https://gitlab.com/api/v4/projects/41027672/packages/generic/v1.5/v1.5/wsl-docker-dev-alpine-v1.5.tar.gz
+	gunzip image.tar.gz
 	mv image.tar ../
 
 image-data.tar:
